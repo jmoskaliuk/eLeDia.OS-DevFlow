@@ -1,15 +1,37 @@
-# Quality
+# Quality (Bugs & Tests)
 
 ## Bugs
 
-### bug01 Popup desync
-Feature: feat01
-Status: open
+### BUG-XXX Titel
+**Status:** open / fixed  
+**Feature:** FEAT-XXX  
+**Beschreibung:**  
+**Reproduktion:**  
+**Erwartet:**  
+**Tatsächlich:**  
 
 ---
 
-## Tests
+## Testläufe
 
-### test01 Popup sync test
-Result: failed
-Related: bug01
+### TEST-XXX
+**Datum:**  
+**Kontext:**  
+**Ergebnis:**  
+**Fehler:**  
+**Bezug:** FEAT-XXX  
+
+---
+
+## Regeln
+
+- Bugs strukturiert
+- Tests klar dokumentieren
+
+---
+
+## KI-Regeln
+
+- Bugs deduplizieren
+- keine Diskussionen
+- nur Fakten
