@@ -1,24 +1,31 @@
 # Developer Documentation
 
-## Popup Control (feat01)
-
-**Architecture:**
-- View ↔ Popup via postMessage
-
-**Components:**
-- view.js
-- popup.js
-
-**Notes:**
-- No backend sync
+## Zweck
+Beschreibt die tatsächliche technische Umsetzung
 
 ---
 
-## Question Navigation (feat02)
+## Struktur
 
-**Architecture:**
-- Session-based state
+### Feature: [Name]
 
-**Components:**
-- navigation handler
-- session storage
+**Architektur:**  
+**Komponenten:**  
+**Datenfluss:**  
+**Besonderheiten:**  
+
+---
+
+## Regeln
+
+- Nur IST-Zustand
+- Keine Tasks
+- Keine Ideen
+
+---
+
+## KI-Regeln
+
+- Nur implementierte Dinge beschreiben
+- präzise und knapp
+- keine Spekulation
