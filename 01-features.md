@@ -1,34 +1,33 @@
-# Features
+# Features (Was + Wie)
 
-## feat01 Popup Control
-
-**Goal:**
-Enable teacher to control popup interaction for participants.
-
-**Behavior:**
-- View controls popup navigation
-- Popup syncs with view
-- Supports forward/back
-
-**Non-Goals:**
-- No server sync required
-
-**Decisions:**
-- Use client-side messaging
+## Zweck
+Beschreibt Features und deren Verhalten (Soll-Zustand)
 
 ---
 
-## feat02 Question Navigation
+## Struktur pro Feature
 
-**Goal:**
-Allow users to navigate between questions.
+### FEAT-XXX Titel
+**Status:** open / planned / in-progress / done  
+**Beschreibung:**  
+**Verhalten:**  
+**Akzeptanzkriterien:**  
+-  
 
-**Behavior:**
-- Next/Back buttons
-- History preserved
+**Offene Fragen:**  
 
-**Non-Goals:**
-- No random resets
+---
 
-**Decisions:**
-- Maintain session state
+## Regeln
+
+- Keine Code-Details
+- Keine Tasks
+- Keine Testlogs
+
+---
+
+## KI-Regeln
+
+- Keine Entscheidungen erfinden
+- Keine Features löschen
+- Nur bestätigte Inhalte ergänzen
