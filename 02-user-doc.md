@@ -1,38 +1,48 @@
 # User Documentation
 
-## Zweck
-Erklärt das System aus Nutzersicht
+## Meta
+
+This document explains the system from a user perspective.
+
+It answers:
+→ How do I use this?
+
+Use this document when:
+- features affect users
+- behavior changes
+
+Do NOT include:
+- technical details
+- internal logic
 
 ---
 
-## Struktur
+## Popup Control (feat01)
 
-### Feature: [Name]
+**What does it do?**  
+Allows the teacher to control what participants see.
 
-**Was macht es?**  
-**Wie benutze ich es?**  
-**Beispiel:**  
-**Hinweise:**  
+**How to use it**
+1. Open activity
+2. Click "Open"
+3. Use Next / Back
 
----
+**Expected result**
+Participants follow the teacher's navigation.
 
-## Regeln
-
-- Keine technischen Details
-- Klar und verständlich schreiben
-
----
-
-## 🔥 KI-Pflicht
-
-Bei JEDEM Feature:
-- prüfen
-- ggf. aktualisieren
+**Tips**
+Use screen sharing for group interaction.
 
 ---
 
-## KI-Regeln
+## Question Navigation (feat02)
 
-- Nutzerfokus
-- einfache Sprache
-- keine internen Begriffe ohne Erklärung
+**What does it do?**  
+Allows users to move between questions.
+
+**How to use it**
+- click "Next"
+- click "Back"
+
+**Expected result**
+Navigation follows user input without reset.
