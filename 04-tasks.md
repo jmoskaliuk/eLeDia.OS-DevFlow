@@ -1,49 +1,67 @@
-# Work & Testing Inbox
+# Tasks
 
-## Zweck
-Operative Steuerung
+## Meta
 
----
+This is the operational center of the system.
 
-## Neu
+It contains:
+- new observations
+- tasks (taskXX)
+- clarifications
+- active work
+- verification steps
 
----
-
-## Klärung notwendig
-
----
-
-## Tasks
-
-### TASK-XXX Titel
-**Status:** open / in-progress / done  
-**Beschreibung:**  
-**Bezug:** FEAT-XXX  
+Start every session here.
 
 ---
 
-## In Arbeit
+## 🆕 New
+
+(Unstructured input allowed)
 
 ---
 
-## Nach Deploy verifizieren
+## ❓ Clarification Needed
+
+Questions that block progress.
 
 ---
 
-## Done
+## 📋 Tasks
+
+### task01 Implement Popup Control
+Status: done  
+Feature: feat01
 
 ---
 
-## Regeln
-
-- Tasks klar schneiden
-- erledigte verschieben
-- keine langen Diskussionen
+### task02 Implement Navigation
+Status: done  
+Feature: feat02
 
 ---
 
-## KI-Regeln
+### task03 Fix popup sync issue
+Status: open  
+Feature: feat01
 
-- Zu Beginn triagieren
-- priorisieren
-- nichts löschen, nur verschieben
+---
+
+## 🔧 In Progress
+
+---
+
+## 🔎 Verify After Deploy
+
+---
+
+## ✅ Done
+
+---
+
+## Rules
+
+- convert relevant items into tasks
+- keep tasks small
+- move completed tasks to Done
+- do not delete, only move
