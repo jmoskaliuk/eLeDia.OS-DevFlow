@@ -22,7 +22,7 @@
 
 | Datei | Zweck |
 |------|------|
-| 01-product.md | Was bauen wir und wie (Soll) |
+| 01-feature.md | Was bauen wir und wie (Soll) |
 | 02-user-doc.md | Nutzung aus Anwendersicht |
 | 03-dev-doc.md | Technische Umsetzung (Ist) |
 | 04-work.md | Tasks + Testing-Inbox |
