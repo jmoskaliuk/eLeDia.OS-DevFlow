@@ -54,6 +54,21 @@ sowohl 02-architecture als auch 05-errors und ggf. 06-ux.
 5. **Tests schreiben** — Behat für UI-Flows, PHPUnit für Logik
 6. **Zwei-Pipelines-Parität** — Lokal (Orb-Container) und Remote (GitHub Actions) nutzen identische Befehle
 
+### LernHive-Arbeitsregel: Abschluss bedeutet ausliefern
+
+Für **LernHive/eLeDia-Projekte mit Hetzner-Deployment** gilt als Default:
+
+1. Task fachlich fertigstellen
+2. passende Tests/Checks ausführen
+3. Änderungen **direkt committen**
+4. **direkt nach `main` pushen**
+5. **direkt den Hetzner-Deploy abwarten und prüfen**
+
+Diese Reihenfolge ist die Standard-Arbeitsweise, **wenn der User nicht ausdrücklich**
+einen lokalen Zwischenstand, Draft-Commit oder „noch nicht deployen“ verlangt.
+Nicht bei jedem kleinen Teilschritt nachfragen, sondern den Slice sauber bis
+`commit → push → deploy → Status prüfen` durchziehen.
+
 ## CI/CD: Zwei-Pipelines-Architektur
 
 Alle eLeDia-Plugins nutzen zwei parallele Pipelines, die beide auf
