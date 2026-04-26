@@ -1012,6 +1012,45 @@ function xmldb_local_example_upgrade(int $oldversion): bool {
         upgrade_plugin_savepoint(true, 2024120103, 'local', 'example');
     }
 
+    // Rename a CAPABILITY (preserve role assignments)
+    // ----------------------------------------------------------------
+    // Step 1 — db/access.php: declare the NEW capability and point
+    //   `clonepermissionsfrom` at the OLD name. Moodle's
+    //   update_capabilities() will copy every role_capabilities row
+    //   from the old cap to the new cap before deleting the old one.
+    //
+    //   'local/example:receivenewthing' => [
+    //       'captype'              => 'read',
+    //       'contextlevel'         => CONTEXT_SYSTEM,
+    //       'archetypes'           => [],
+    //       'clonepermissionsfrom' => 'local/example:receiveoldthing',
+    //   ],
+    //
+    // Step 2 — db/upgrade.php: call update_capabilities() explicitly
+    //   from the savepoint that ships the rename. Moodle DOES call it
+    //   automatically AFTER db/upgrade.php finishes, but if any code
+    //   inside the savepoint (e.g. a role::ensure() helper) tries to
+    //   assign the new capability, it will hit "Capability '…' was
+    //   not found!". Calling update_capabilities() up-front is
+    //   idempotent and matches the install.php pattern.
+    if ($oldversion < 2024120104) {
+        update_capabilities('local_example');
+        // Optional: re-assert role assignments under the new cap name
+        // so the site lands in a known-good state even if a previous
+        // run had cleared the old assignment.
+        \local_example\role_seeder::ensure();
+        upgrade_plugin_savepoint(true, 2024120104, 'local', 'example');
+    }
+    //
+    // Step 3 — once every site has run the rename savepoint (typically
+    //   1–2 release cycles later), drop `clonepermissionsfrom` from
+    //   db/access.php. Leaving it in is harmless but obscures intent.
+    //
+    // Verification (local container):
+    //   php -r "...; \$DB->get_records_select('capabilities',
+    //       'name LIKE ?', ['%example%'], 'name', 'name');"
+    //   The OLD name should be absent and the NEW name present.
+
     return true;
 }
 ```

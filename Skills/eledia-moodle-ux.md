@@ -86,6 +86,92 @@ Maintain consistent button semantics across all plugins:
 | Small table action | `btn btn-sm btn-outline-danger` | Per-row reset |
 | Moodle-wrapped | `$OUTPUT->single_button()` | Form-backed actions |
 
+### Row Actions: Icons vs. Kebab
+
+Choose the row-action surface based on action count:
+
+| Action count | Surface                           | Rationale |
+|--------------|-----------------------------------|-----------|
+| 1            | Single inline icon link           | A kebab for one item is wasted space |
+| 2–3          | Inline icon row (no kebab)        | Faster scan; the icons name the action via `title` + `aria-label` |
+| 4+           | `core\output\action_menu` (kebab) | A row of 4+ icons fights with the row's primary content |
+
+Inline-icon pattern (≤3 actions). Each `<a>` carries an `aria-label`
+that includes the row name so screen-reader users get full context:
+
+```php
+$rowname = format_string($item->name);
+$out  = html_writer::start_div('lh-row-actions');
+$out .= html_writer::link($viewurl,
+    '<i class="fa fa-eye" aria-hidden="true"></i>',
+    ['class' => 'lh-row-action',
+     'aria-label' => get_string('view') . ': ' . $rowname,
+     'title' => get_string('view')]);
+$out .= html_writer::link($editurl,
+    '<i class="fa fa-pen" aria-hidden="true"></i>',
+    ['class' => 'lh-row-action',
+     'aria-label' => get_string('edit') . ': ' . $rowname,
+     'title' => get_string('edit')]);
+$out .= html_writer::link($deleteurl,
+    '<i class="fa fa-trash" aria-hidden="true"></i>',
+    ['class' => 'lh-row-action lh-row-action--danger',
+     'aria-label' => get_string('delete') . ': ' . $rowname,
+     'title' => get_string('delete'),
+     // Hook the AMD confirm-dialog (data-action attribute matches
+     // your plugin's confirm_actions module init() selector).
+     'data-action' => 'lh-confirm-delete',
+     'data-confirm-title' => get_string('confirm_delete_title', '...'),
+     'data-confirm-body'  => get_string('confirm_delete_named', '...', $rowname),
+     'data-confirm-yes'   => get_string('delete'),
+     'data-confirm-no'    => get_string('cancel')]);
+$out .= html_writer::end_div();
+```
+
+SCSS: 32 px circular icons with hover-lift; the danger variant tints
+both stroke and hover background. **Do not** highlight the entire
+table row on hover — focus must stay on the icon to satisfy
+`:focus-visible` contrast requirements.
+
+### Plugin-Shell Header Slots (Zone A)
+
+The shared `local_lernhive/plugin_shell_header` partial renders a
+plugin's Zone A. Optional slots (all degrade gracefully when absent):
+
+| Slot                     | Purpose                                        | Notes |
+|--------------------------|------------------------------------------------|-------|
+| `backurl` / `backlabel`  | Leading ← arrow on detail pages                | Use on `view.php` / `edit.php`, not on indices |
+| `ctas[]`                 | Labelled action buttons                        | Use for *named* actions like "Save & exit" or capability-gated long-form CTAs |
+| `createurl` / `createlabel` | Trailing **icon-only** Create button (`fa-plus`) | Preferred over a labelled CTA on overview pages where "create" is unambiguous |
+| `helpurl` / `helplabel`  | Trailing icon-only Help button (`fa-question`) | Always pair with a real help target — empty `helpurl` removes the slot |
+| `settingsurl` / `settingslabel` | Trailing icon-only Settings cog          | Caller is responsible for the `moodle/site:config` capability gate |
+
+Slot order, left → right: `[back] [title-block] [ctas, create, help, settings]`.
+Icon-only slots use circular 36 px buttons with brand-coloured strokes
+on a transparent background — they switch to a filled accent fill on
+hover/focus to mark "this is clickable".
+
+### Page-width Wrapper
+
+Every plugin page opts into a width variant by wrapping its content
+in `.lh-plugin-shell .lh-plugin-shell--{default|reading|full}`:
+
+| Variant     | Token (`--lh-page-max-*`) | Use for                                     |
+|-------------|---------------------------|---------------------------------------------|
+| `default`   | 72rem                     | Card grids, indices                         |
+| `reading`   | 58rem                     | Forms, wizards, focus pages, audit logs     |
+| `full`      | none                      | Wide tables, dashboards, orgchart, contenthub |
+
+Tip: when an admin page calls `admin_externalpage_setup()`, Moodle
+forces `pagelayout = 'admin'`, which re-introduces the admin tree in
+the sidebar. If your Zone A already states the page identity, reset
+to `'standard'` AFTER the setup call:
+
+```php
+admin_externalpage_setup('local_example_audit');
+$PAGE->set_pagelayout('standard');
+$PAGE->set_heading('');
+```
+
 ### Progress Visualization
 
 Multi-segment progress bars show stage distribution:
