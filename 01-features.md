@@ -2,79 +2,74 @@
 
 ## Meta
 
-This document defines what the product should do.
+Dieses Dokument definiert, **was das Produkt tun soll**.
 
-It describes:
-- features (featXX)
-- intended behavior
-- product-level decisions
+Es enthält:
+- Feature-Definitionen (`featXX`)
+- gewünschtes Verhalten und Akzeptanzkriterien
+- Produktentscheidungen
+- Releases (`relXX`)
 
-This document represents the **intended behavior of the system**.
-
----
-
-## How to use this document
-
-### For humans
-
-Use this document to:
-- define new features before implementation
-- clarify behavior during development
-- document decisions and constraints
-- ensure a shared understanding of the product
-
-This is the place to think about:
-→ *What should the product do and why?*
+Dieses Dokument ist die **Quelle der Wahrheit für gewünschtes Verhalten**.
 
 ---
 
-### For AI
+## Verwendung
 
-When working with this document:
+### Für Menschen
 
-- treat it as the **source of truth for expected behavior**
-- do not assume behavior that is not defined here
-- if something is unclear → raise a clarification instead of guessing
-- ensure implementation and documentation align with this document
+Nutze dieses Dokument, um:
+- neue Features vor der Implementierung zu definieren
+- Verhalten während der Entwicklung zu klären
+- Entscheidungen und Constraints festzuhalten
+- ein gemeinsames Produktverständnis sicherzustellen
 
----
-
-## What belongs here
-
-Include:
-- feature definitions (featXX)
-- goals and purpose
-- expected behavior (including edge cases)
-- non-goals (explicit exclusions)
-- design decisions
+Hier wird gedacht: **Was soll das Produkt tun und warum?**
 
 ---
 
-## What does NOT belong here
+### Für KI
 
-Do NOT include:
-- tasks (→ 04-tasks.md)
-- implementation details (→ 03-dev-doc.md)
-- test results or bugs (→ 05-quality.md)
-- user instructions (→ 02-user-doc.md)
+- Behandle dieses Dokument als **Quelle der Wahrheit für erwartetes Verhalten**.
+- Erfinde kein Verhalten, das hier nicht definiert ist.
+- Bei Unklarheit → **keine Annahme**, sondern Klärung als `qXX` in `04-tasks.md`.
+- Implementierung und Doku müssen mit diesem Dokument konsistent sein.
 
 ---
 
-## Product Overview
+## Was gehört hierher
 
-This section describes the product as a whole.
+- Feature-Definitionen (`featXX`)
+- Ziele und Zweck
+- erwartetes Verhalten inklusive Edge Cases
+- **Akzeptanzkriterien** (Given/When/Then)
+- Non-Goals (explizite Ausschlüsse)
+- Design-Entscheidungen
+- Releases (`relXX`) als Bündel von Features
 
-### Purpose
-Describe the overall goal of the system.
+## Was gehört NICHT hierher
 
-### Core Concepts
-List the key ideas or building blocks of the system.
+- Tasks → `04-tasks.md`
+- Implementierungsdetails → `03-dev-doc.md`
+- Bugs / Test-Ergebnisse → `05-quality.md`
+- Bedienungsanleitungen → `02-user-doc.md`
+- Architektur-Entscheidungen → `00-master.md` §10 (ADR)
 
-### Key Features
-High-level overview of main features and how they relate.
+---
+
+## Produkt-Übersicht
+
+### Zweck
+Beschreibt das übergreifende Ziel des Systems.
+
+### Kernkonzepte
+Die zentralen Bausteine.
+
+### Hauptfunktionen
+High-Level-Übersicht und ihre Beziehungen zueinander.
 
 ### Constraints
-Technical, business, or conceptual limitations.
+Technische, geschäftliche oder konzeptionelle Grenzen.
 
 ---
 
@@ -82,56 +77,106 @@ Technical, business, or conceptual limitations.
 
 ---
 
-### featXX [Feature Name]
+### featXX [Feature-Name]
 
-**Goal**  
-Why does this feature exist?  
-What problem does it solve?
-
----
-
-**Behavior**  
-What exactly should happen?
-
-- describe main flow
-- include edge cases
-- define expected system reactions
+**Ziel**
+Warum existiert dieses Feature? Welches Problem löst es?
 
 ---
 
-**Non-goals**  
-What is explicitly NOT part of this feature?
+**Verhalten**
+Was genau soll passieren?
 
-- prevents scope creep
-- avoids wrong assumptions
-
----
-
-**Decisions**  
-Important design decisions:
-
-- why this approach was chosen
-- rejected alternatives (optional)
+- Hauptfluss beschreiben
+- Edge Cases einschließen
+- erwartete System-Reaktionen definieren
 
 ---
 
-**Open Questions (optional)**  
-Only include if clarification is needed.
+**Akzeptanzkriterien**
 
-- unresolved behavior
-- unclear constraints
+Format: Given / When / Then. Jedes Kriterium hat eine ID `featXX.ACyy` und wird in `05-quality.md` von `testXX` referenziert.
+
+```
+- featXX.AC01
+  Given:  <Ausgangszustand>
+  When:   <Aktion>
+  Then:   <erwartetes Ergebnis>
+
+- featXX.AC02
+  Given:  ...
+  When:   ...
+  Then:   ...
+```
+
+Faustregel: Ein Akzeptanzkriterium ist erfüllt, wenn ein Außenstehender mit der Beschreibung allein verifizieren kann, ob das System es erfüllt.
 
 ---
 
-## Rules
+**Non-Goals**
 
-- Every feature must have a unique ID (featXX)
-- Keep descriptions precise and unambiguous
-- Avoid technical implementation details
-- Update this document if behavior changes
+- explizit ausgeschlossen
+- verhindert Scope Creep
 
 ---
 
-## Key Principle
+**Entscheidungen**
 
-> This document defines what should happen — not how it is implemented.
+Wichtige produktbezogene Design-Entscheidungen:
+- gewählter Ansatz und Begründung
+- verworfene Alternativen (optional)
+
+(Architektur-Entscheidungen → ADR im Master-Dokument.)
+
+---
+
+**Offene Fragen** (optional)
+
+Nur eintragen, wenn Klärung nötig ist. Verweis auf `qXX` in `04-tasks.md`.
+
+---
+
+## Regeln
+
+- Jedes Feature hat eine eindeutige ID (`featXX`).
+- Beschreibungen präzise und unzweideutig halten.
+- Keine Implementierungsdetails.
+- Bei Verhaltensänderung dieses Dokument aktualisieren — sonst ist das Feature nicht „done".
+
+---
+
+## Grundprinzip
+
+> Dieses Dokument definiert, **was passieren soll** — nicht **wie es implementiert ist**.
+
+---
+
+## 📦 Releases
+
+Releases bündeln eine Menge fertiger Features zu einem versionierten Stand.
+
+### Konvention
+
+- ID-Format: `relXX` (oder semantisch `R1.2`, `R1.3`, …)
+- Ein Release ist erst freigegeben, wenn **alle enthaltenen Features den Done-Kriterien aus `00-master.md` §6** entsprechen.
+- Release-Freigabe ist eine Mensch-only-Befugnis (PO).
+- Nach Freigabe: Tag im Repo (`vX.Y`), Eintrag im jeweiligen `Playbooks/`-Dokument für Release-Mechanik.
+
+### Release-Vorlage
+
+```
+### relXX RX.Y
+
+- **Datum:** YYYY-MM-DD
+- **Status:** geplant | in Arbeit | freigegeben
+- **Enthaltene Features:** featAA, featBB, featCC
+- **Bekannte Einschränkungen:** offene bugXX (Severity ≤ S3, dokumentiert in 05-quality.md)
+- **Migrations-Hinweis:** falls Schema-/Konfig-Änderung
+- **Release-Notes:** kurzer Klartext für Anwender (verlinkt nach 02-user-doc.md)
+```
+
+### Aktive Releases
+
+(noch keine — sobald das erste konkrete Projekt darauf läuft, wandert es hierher.)
+
+---
