@@ -1,204 +1,183 @@
-# Developer Documentation
+# Entwickler-Dokumentation
 
 ## Meta
 
-This document describes how the system is actually implemented.
+Dieses Dokument beschreibt, **wie das System tatsächlich implementiert ist**.
 
-It serves two purposes:
-1. Document the technical structure of the product
-2. Describe how individual features (featXX) are implemented
+Es hat zwei Aufgaben:
+1. die technische Struktur des Produkts dokumentieren
+2. die Implementierung einzelner Features (`featXX`) festhalten
 
-This document represents the **current implementation (source of truth for reality)**.
-
----
-
-## How to use this document
-
-### For humans
-
-Use this document to:
-- understand how the system works internally
-- navigate architecture and components
-- onboard new developers
-- support debugging and extension
-
-Think:
-→ *How is this system built and how does it actually work?*
+Dieses Dokument ist die **Quelle der Wahrheit für die Realität (Ist-Zustand)**.
 
 ---
 
-### For AI
+## Verwendung
 
-When working with this document:
+### Für Menschen
 
-- treat it as the **source of truth for implementation**
-- do not invent behavior not implemented
-- do not describe intended behavior → use `01-features.md` for that
-- ensure consistency with:
-  - `01-features.md` (intended behavior)
-  - `02-user-doc.md` (user-facing behavior)
-- if mismatch is detected → flag inconsistency
+Nutze dieses Dokument, um:
+- die interne Funktionsweise zu verstehen
+- Architektur und Komponenten zu navigieren
+- neue Entwickler:innen zu onboarden
+- Debugging und Erweiterungen zu unterstützen
 
----
-
-## What belongs here
-
-Include:
-- architecture
-- components and modules
-- data flow
-- interactions between components
-- technical constraints
-- known limitations
+Denke: **Wie ist das System aufgebaut und wie funktioniert es wirklich?**
 
 ---
 
-## What does NOT belong here
+### Für KI
 
-Do NOT include:
-- feature planning or ideas → `01-features.md`
-- tasks or work tracking → `04-tasks.md`
-- bugs or test logs → `05-quality.md`
-- user explanations → `02-user-doc.md`
-
----
-
-# 🧭 System Overview
-
-## Architecture Overview
-
-Describe the overall architecture:
-
-- system type (e.g. client-side, server-client)
-- major layers
-- communication patterns
+- Behandle dieses Dokument als **Quelle der Wahrheit für die Implementierung**.
+- Erfinde kein Verhalten, das nicht implementiert ist.
+- Beschreibe keine Wunsch-Implementierung — dafür ist `01-features.md` zuständig.
+- Konsistenz prüfen mit:
+  - `01-features.md` (gewünschtes Verhalten)
+  - `02-user-doc.md` (sichtbares Verhalten)
+- Bei Mismatch → Inkonsistenz flaggen, ggf. `qXX` anlegen.
 
 ---
 
-## Core Components
+## Was gehört hierher
 
-List and describe key components:
+- Architektur
+- Komponenten und Module
+- Datenfluss
+- Komponenten-Interaktionen
+- technische Constraints
+- bekannte Einschränkungen
 
-- component 1 → purpose
-- component 2 → purpose
+## Was gehört NICHT hierher
+
+- Feature-Planung / Ideen → `01-features.md`
+- Tasks / Work-Tracking → `04-tasks.md`
+- Bugs / Test-Logs → `05-quality.md`
+- Benutzererklärungen → `02-user-doc.md`
+- Architektur-Entscheidungen → `00-master.md` §10 (ADR)
 
 ---
 
-## Data Flow
+# 🧭 System-Übersicht
 
-Describe how data moves through the system:
+## Architektur
 
-- input → processing → output
-- component interactions
-- event flow
+- Systemtyp (z. B. Client-only, Client-Server, Plugin in Host-System)
+- Hauptebenen
+- Kommunikationsmuster
 
 ---
 
-## External Dependencies
+## Kernkomponenten
 
-List relevant dependencies:
+- Komponente 1 → Zweck
+- Komponente 2 → Zweck
 
-- libraries
+---
+
+## Datenfluss
+
+- Eingabe → Verarbeitung → Ausgabe
+- Komponenten-Interaktionen
+- Event-Fluss
+
+---
+
+## Externe Abhängigkeiten
+
+- Libraries (mit Versionen)
 - APIs
-- services
+- Services
 
 ---
 
-## Technical Constraints
+## Technische Constraints
 
-Important technical limitations:
-
-- performance constraints
-- architectural limitations
-- known trade-offs
+- Performance
+- architektonische Grenzen
+- bekannte Trade-offs
 
 ---
 
-# 🧩 Feature Implementation
+# 🧩 Feature-Implementierung
 
-Each feature describes how it is implemented in the system.
+Pro Feature die tatsächliche Implementierung.
 
-All entries must:
-- reference a feature (featXX)
-- describe actual implementation
-- avoid speculation
-
----
-
-## Feature Template
+Alle Einträge:
+- referenzieren ein `featXX`
+- beschreiben den **Ist-Zustand**
+- spekulieren nicht
 
 ---
 
-### [Feature Name] (featXX)
-
-**Overview**  
-Short description of the implementation.
+## Feature-Vorlage
 
 ---
 
-**Architecture**  
-How this feature fits into the system:
+### [Feature-Name] (`featXX`)
 
-- components involved
-- communication patterns
-
----
-
-**Components**
-
-List relevant components:
-
-- component A → role
-- component B → role
+**Überblick**
+Kurze Beschreibung der Implementierung.
 
 ---
 
-**Data Flow**
-
-Describe how data moves:
-
-- trigger → processing → result
-
----
-
-**State Management (if relevant)**
-
-- how state is stored
-- how state changes
+**Architektur**
+Wie das Feature im System sitzt:
+- beteiligte Komponenten
+- Kommunikationsmuster
 
 ---
 
-**Dependencies**
+**Komponenten**
 
-- internal dependencies (other features, modules)
-- external dependencies (APIs, libraries)
-
----
-
-**Constraints / Limitations**
-
-- known issues
-- technical limitations
-- edge-case behavior
+- Komponente A → Rolle
+- Komponente B → Rolle
 
 ---
 
-**Notes (optional)**
+**Datenfluss**
 
-- implementation details worth knowing
-- unusual decisions
-
----
-
-# 📏 Rules
-
-- Always describe the current implementation (not the intended one)
-- Keep descriptions precise and technical
-- Do not duplicate feature descriptions
-- Update this document when implementation changes
+- Trigger → Verarbeitung → Ergebnis
 
 ---
 
-# 🔑 Key Principle
+**State Management** (falls relevant)
 
-> This document explains how the system is built — not how it should behave.
+- wo der Zustand liegt
+- wie er sich ändert
+
+---
+
+**Abhängigkeiten**
+
+- intern (andere Features, Module)
+- extern (APIs, Libraries)
+
+---
+
+**Constraints / Einschränkungen**
+
+- bekannte Probleme
+- technische Grenzen
+- Edge-Case-Verhalten
+
+---
+
+**Notizen** (optional)
+
+- erwähnenswerte Implementierungsdetails
+- ungewöhnliche Entscheidungen (Verweis auf `adrXX`, falls relevant)
+
+---
+
+# 📏 Regeln
+
+- Beschreibe immer den **Ist-Zustand**, nicht den Soll-Zustand.
+- Präzise und technisch.
+- Feature-Beschreibungen nicht duplizieren — dafür ist `01-features.md` da.
+- Aktualisieren, sobald sich die Implementierung ändert (sonst nicht „done").
+
+---
+
+# 🔑 Grundprinzip
+
+> Dieses Dokument erklärt, **wie das System gebaut ist** — nicht **wie es sich verhalten soll**.

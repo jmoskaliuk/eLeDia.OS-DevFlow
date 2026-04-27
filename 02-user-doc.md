@@ -1,178 +1,170 @@
-# User Documentation
+# Benutzer-Dokumentation
 
 ## Meta
 
-This document describes how users interact with the product and its features.
+Dieses Dokument beschreibt, **wie Benutzer mit dem Produkt interagieren**.
 
-It serves two purposes:
-1. Explain the product from a user perspective
-2. Describe how individual features (featXX) are used
+Es hat zwei Aufgaben:
+1. das Produkt aus Benutzersicht erklären
+2. die Bedienung einzelner Features (`featXX`) dokumentieren
 
-This document is the **source of truth for user experience**.
-
----
-
-## How to use this document
-
-### For humans
-
-Use this document to:
-- describe how users interact with the system
-- ensure features are understandable and usable
-- document flows, steps, and expected outcomes
-- validate usability independently from implementation
-
-Think:
-→ *How does a user experience this product?*
+Dieses Dokument ist die **Quelle der Wahrheit für die Benutzererfahrung**.
 
 ---
 
-### For AI
+## Verwendung
 
-When working with this document:
+### Für Menschen
 
-- treat it as the **source of truth for user-facing behavior**
-- do not introduce technical explanations
-- ensure consistency with `01-features.md`
-- ensure it matches actual behavior (`03-dev-doc.md`)
-- if unclear → request clarification
+Nutze dieses Dokument, um:
+- die Interaktion mit dem System zu beschreiben
+- Features verständlich und bedienbar zu halten
+- Flows, Schritte und erwartete Ergebnisse festzuhalten
+- Usability unabhängig von der Implementierung zu validieren
 
----
-
-## What belongs here
-
-Include:
-- user flows
-- step-by-step interactions
-- expected results
-- constraints from a user perspective
-- usage examples
+Denke: **Wie erlebt ein Benutzer dieses Produkt?**
 
 ---
 
-## What does NOT belong here
+### Für KI
 
-Do NOT include:
-- implementation details → `03-dev-doc.md`
-- internal logic or architecture
-- tasks or planning → `04-tasks.md`
-- bugs or test logs → `05-quality.md`
-
----
-
-# Product Usage Overview
-
-## Target Users
-Who are the main users?
-
-- user type 1
-- user type 2
+- Behandle dieses Dokument als **Quelle der Wahrheit für sichtbares Verhalten**.
+- Keine technischen Erklärungen.
+- Konsistent mit `01-features.md` und `03-dev-doc.md`.
+- Bei Unklarheit → `qXX` in `04-tasks.md`.
 
 ---
 
-## Main Use Cases
-What are the primary things users want to achieve?
+## Was gehört hierher
 
-- use case 1
-- use case 2
-- use case 3
+- Benutzer-Flows
+- Schritt-für-Schritt-Interaktionen
+- erwartete Ergebnisse
+- Constraints aus Benutzersicht
+- Anwendungsbeispiele
 
----
+## Was gehört NICHT hierher
 
-## Typical Workflow
-
-Describe a typical end-to-end flow:
-
-1. user starts
-2. user performs action
-3. system responds
-4. user continues
-5. outcome
+- Implementierungsdetails → `03-dev-doc.md`
+- interne Logik / Architektur
+- Tasks oder Planung → `04-tasks.md`
+- Bugs / Test-Logs → `05-quality.md`
 
 ---
 
-## Key Concepts (User Perspective)
+# Produkt-Nutzung — Übersicht
 
-Explain important concepts in simple terms.
+## Zielgruppen
+Wer sind die Hauptnutzer?
 
-- concept 1
-- concept 2
-
----
-
-# Feature Usage
-
-Each feature describes how a user interacts with it.
-
-All entries must:
-- reference a feature (featXX)
-- focus on usability
-- avoid technical details
+- Nutzertyp 1
+- Nutzertyp 2
 
 ---
 
-## Feature Template
+## Haupt-Use-Cases
+Was wollen Nutzer typischerweise erreichen?
+
+- Use-Case 1
+- Use-Case 2
+- Use-Case 3
 
 ---
 
-### [Feature Name] (featXX)
+## Typischer Workflow
 
-**What does it do?**  
-Describe the feature in simple terms.
+End-to-End-Beispielfluss:
 
----
-
-**When do I use it?**  
-Explain the context or use case.
-
----
-
-**How to use it**
-
-Step-by-step:
-
-1. step
-2. step
-3. step
+1. Nutzer startet
+2. Nutzer führt Aktion aus
+3. System reagiert
+4. Nutzer fährt fort
+5. Ergebnis
 
 ---
 
-**Expected Result**
+## Kernkonzepte (Benutzerperspektive)
 
-What should happen after using it?
+Wichtige Begriffe in einfacher Sprache.
 
----
-
-**Examples (optional)**
-
-Provide a realistic usage example.
+- Konzept 1
+- Konzept 2
 
 ---
 
-**Limitations / Notes**
+# Feature-Bedienung
 
-- constraints
-- edge cases relevant to users
+Pro Feature: wie der Benutzer damit arbeitet.
 
----
-
-**Common Mistakes (optional)**
-
-- mistake 1
-- mistake 2
+Alle Einträge:
+- referenzieren ein `featXX`
+- fokussieren auf Bedienbarkeit
+- vermeiden technische Details
 
 ---
 
-# Rules
-
-- Every feature must reference a `featXX`
-- Keep language simple and user-focused
-- Avoid technical terminology
-- Keep instructions actionable
-- Update when user-facing behavior changes
+## Feature-Vorlage
 
 ---
 
-# Key Principle
+### [Feature-Name] (`featXX`)
 
-> This document explains how the product feels and works for the user — not how it is built.
+**Was tut es?**
+Feature in einfachen Worten beschreiben.
+
+---
+
+**Wann nutze ich es?**
+Kontext oder Anwendungsfall erklären.
+
+---
+
+**Bedienung**
+
+Schritt für Schritt:
+
+1. Schritt
+2. Schritt
+3. Schritt
+
+---
+
+**Erwartetes Ergebnis**
+
+Was soll nach der Nutzung passieren?
+
+---
+
+**Beispiele** (optional)
+
+Realistisches Anwendungsbeispiel.
+
+---
+
+**Einschränkungen / Hinweise**
+
+- Constraints
+- für den Nutzer relevante Edge Cases
+
+---
+
+**Häufige Fehler** (optional)
+
+- Fehler 1
+- Fehler 2
+
+---
+
+# Regeln
+
+- Jedes Feature referenziert ein `featXX`.
+- Sprache einfach und nutzerorientiert.
+- Keine Fachterminologie.
+- Anweisungen sind handlungsorientiert.
+- Aktualisierung, sobald sich das sichtbare Verhalten ändert (sonst nicht „done").
+
+---
+
+# Grundprinzip
+
+> Dieses Dokument erklärt, **wie sich das Produkt für den Nutzer anfühlt** — nicht **wie es gebaut ist**.
