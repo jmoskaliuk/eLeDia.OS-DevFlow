@@ -129,3 +129,63 @@ Beantwortete `qXX`. Antworten sind ins jeweilige Doc übernommen.
 ## Grundprinzip
 
 > Was nicht hier steht, passiert nicht.
+
+---
+
+### task42 Teststruktur für ContentHub-Library-Pfad konsolidieren
+Status: done
+Linked: test42, bug42
+
+**Beschreibung:**
+Die frühere Library-Teststruktur wurde in `local_lernhive_contenthub`
+konsolidiert. Copy, Template und Library sind keine separaten Plugin-DevFlows
+mehr, sondern ContentHub-Pfade. Künftig muss jedes neue Feature/Modul sofort
+mit Test-Skelett im owning Plugin starten.
+
+**Ergebnis:**
+- Library-PHPUnit-Tests liegen unter `plugins/local_lernhive_contenthub/tests/library/`.
+- Library-Behat-Tests liegen unter `plugins/local_lernhive_contenthub/tests/behat/`.
+- Alte Plugin-Ordner `local_lernhive_copy` und `local_lernhive_library` sind entfernt.
+- Der einzige DevFlow für Copy, Template und Library ist
+  `plugins/local_lernhive_contenthub/docs/`.
+
+---
+
+### task43 Lessons Learned: S3-Auth, Restore-Fehler, Odoo-FK
+Status: open
+Linked: bug43, test43
+
+**Beschreibung:**
+- S3 presigned URLs dürfen keinen Authorization-Header bekommen (Hetzner/CEPH: InvalidArgument)
+- ContentHub-Library-Import: Moodle-Restore muss den Zielkurs sauber vor
+  `restore_controller` anlegen, sonst droht `restore_check_course_not_exists`
+- Odoo: Wizard-Objekte mit FK müssen vor referenzierten Versionen gelöscht werden
+
+**ToDo:**
+- Lessons in Fehlerdatenbank und Tests aufnehmen
+- Testfälle für ContentHub-Library-Import/Restore-Fehler und Odoo-FK-Probleme anlegen
+
+---
+
+### task44 ContentHub nach Plugin-Zusammenlegung UX-durchgehen
+Status: in_progress
+Linked: test44
+
+**Beschreibung:**
+Nach der Zusammenlegung von Copy, Template und Library in ContentHub braucht
+der gesamte ContentHub einen UX-Durchgang.
+
+**Schwerpunkte:**
+- Plugin-Shell-Breiten prüfen: Default-Shell ist breit; nur begründete Ausnahmen dokumentieren.
+- Library-Karten gleich hoch halten.
+- Library-Katalog mit Suchleiste und Filtern ausstatten.
+- Tags/Themen als Feed-Feld nutzen (`tags`) und im Katalog filterbar machen.
+- Import-Bestätigungsseite aus der nackten Moodle-Form in eine ContentHub-Fläche bringen.
+
+**Done-Checkliste:**
+- [x] Library-Karten gleiche Höhe
+- [x] Library-Suche
+- [x] Sprach-/Themenfilter auf Basis vorhandener Katalogdaten
+- [x] Feed-Schema um `tags` ergänzt
+- [x] Import-Bestätigungsseite layoutseitig geglättet
+- [ ] Browser-Sichtung auf dev.lernhive.de
